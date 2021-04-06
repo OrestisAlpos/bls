@@ -592,6 +592,11 @@ int blsSignatureRecover(blsSignature *sig, const blsSignature *sigVec, const bls
 	return b ? 0 : -1;
 }
 
+bool blsSignatureRecoverGeneralised(blsSignature *sig, const blsSignature *sigVec, const blsId *recombVec, mclSize n)
+{
+	mclBnG1_mulVec(&sig->v, &sigVec->v, &recombVec->v, n);
+}
+
 void blsSecretKeyAdd(blsSecretKey *sec, const blsSecretKey *rhs)
 {
 	*cast(&sec->v) += *cast(&rhs->v);

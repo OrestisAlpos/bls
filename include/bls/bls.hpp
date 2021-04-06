@@ -533,6 +533,20 @@ public:
 		int ret = blsSignatureRecover(&self_, &sigVec->self_, &idVec->self_, n);
 		if (ret != 0) throw std::runtime_error("blsSignatureRecover:same id");
 	}
+
+	/*
+		recover sig from k sigVec, using the recombination vector recombVec
+	*/
+	void recoverGeneralised(const SignatureVec& sigVec, const IdVec& recombVec)
+	{
+		if (sigVec.size() != recombVec.size()) throw std::invalid_argument("Signature:recoverGeneralized");
+		recoverGeneralised(sigVec.data(), recombVec.data(), recombVec.size());
+	}
+	
+	void recoverGeneralised(const Signature* sigVec, const Id *recombVec, size_t n)
+	{
+		blsSignatureRecoverGeneralised(&self_, &sigVec->self_, &recombVec->self_, n);
+	}
 };
 
 /*

@@ -8,3 +8,6 @@ obj/*.o
 sample/*.txt
 !sample/CMakeLists.txt
 build/
+CMakeFiles/
+blsTargets.cmake
+cmake_install.cmake

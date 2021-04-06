@@ -201,6 +201,8 @@ BLS_DLL_API int blsPublicKeyRecover(blsPublicKey *pub, const blsPublicKey *pubVe
 // recover sig from {(sigVec[i], idVec[i]) for i = 0, ..., n-1}
 BLS_DLL_API int blsSignatureRecover(blsSignature *sig, const blsSignature *sigVec, const blsId *idVec, mclSize n);
 
+BLS_DLL_API bool blsSignatureRecoverGeneralised(blsSignature *sig, const blsSignature *sigVec, const blsId *recombVec, mclSize n);
+
 // sec += rhs
 BLS_DLL_API void blsSecretKeyAdd(blsSecretKey *sec, const blsSecretKey *rhs);
 // pub += rhs
